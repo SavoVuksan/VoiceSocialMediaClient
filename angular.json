@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "voice-social-media": {
+    "voice-social-media-client": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/voice-social-media",
+            "outputPath": "dist/voice-social-media-client",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "voice-social-media:build"
+            "browserTarget": "voice-social-media-client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "voice-social-media:build:production"
+              "browserTarget": "voice-social-media-client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "voice-social-media:build"
+            "browserTarget": "voice-social-media-client:build"
           }
         },
         "test": {
@@ -114,15 +114,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "voice-social-media:serve"
+            "devServerTarget": "voice-social-media-client:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "voice-social-media:serve:production"
+              "devServerTarget": "voice-social-media-client:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "voice-social-media"
+    }
+  },
+  "defaultProject": "voice-social-media-client",
+  "cli": {
+    "analytics": false
+  }
 }
