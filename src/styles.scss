@@ -1,1 +1,61 @@
+$light-gray: #B4B4B4;
+$dark-gray: #373737;
+$orange: #FFA372;
+$red: #ED6663;
+$light-blue: #4E89AE;
+$blue: #43658B;
+
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
+html{
+
+}
+body{
+    font-family: 'Work Sans', sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+h1{
+    font-size: 3rem;
+    margin: 1rem 0rem;
+}
+h2{
+    font-size: 2.5rem;
+}
+h3{
+    font-size: 2rem;
+}
+
+span{
+    font-size: 1rem;
+}
+
+a{
+    font-weight: bold;
+    text-decoration: none;
+    color: $blue;
+}
+
+input{
+    border-width: 1px;
+    border-style: solid;
+    border-color: $light-gray;
+    border-radius: .3rem;
+    font-size: 1rem;
+    padding: 0.5rem .5rem;
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0rem 1.5rem 0rem;
+    box-sizing: border-box;
+    
+    &:focus{
+        outline-color: $light-blue;
+    }
+    &[type="button"]{
+        background-color: $blue;
+        font-weight: bold;
+        color: white;
+        border: none;
+    }
+}
