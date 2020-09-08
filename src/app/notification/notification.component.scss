@@ -1,0 +1,18 @@
+@use './../../vars.scss' as *;
+
+#actor{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0rem 1rem 0rem 2rem;
+}
+
+.line{
+    height: 2rem;
+    border-right: 3px solid $light-gray;
+    width: 1px;
+    margin-left: 3.5rem;
+}
+
+#actorName{
+    font-weight: bold;
+}

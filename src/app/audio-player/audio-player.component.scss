@@ -1,0 +1,49 @@
+@use './../../vars.scss' as *;
+
+#progressBar{
+    display: inline-block;
+    min-width: 70%;
+    height: 1rem;
+    background-color: $light-gray;
+    border-radius: 1rem;
+    margin: 0rem 0.5rem;
+    vertical-align: middle;
+    position: relative;
+}
+
+#play{
+    margin: 0rem 0.5rem;
+    border-radius: 100%;
+    border: none;
+    background-color: $red;
+    padding: 1.5rem;
+    vertical-align: middle;
+    position: relative;
+    img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-40%, -50%);
+    }
+}
+
+#knob{
+    background-color: $red;
+    width: 1.5rem;
+    display: inline-block;
+    vertical-align: middle;
+    height: 1.5rem;
+    border-radius: 100%;
+    border:none;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+}
+
+#progress{
+    height: 100%;
+    background-color: $orange;
+    border-radius: 1rem;
+    width: 50%;
+}

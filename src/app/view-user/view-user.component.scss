@@ -1,0 +1,44 @@
+@use './../../vars.scss' as *;
+#ctn{
+    text-align: center;
+    ul{
+        list-style-type: none;
+        li{
+            display: inline-block;
+            margin: 0rem 1rem;
+        }
+    }
+}
+
+
+#following, #followers{
+    color: $blue;
+    font-weight: bold;
+}
+#follow{
+    border: none;
+    background-color: $red;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: 'Work Sans', sans-serif;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    padding: .5rem 4rem;
+    
+}
+
+#voices{
+    text-align: left;
+}
+
+.profile-pic-l{
+    width: 150px;
+    height: 150px;
+    background-image: url('./../../assets/ProfilePic.jpg');
+    transform: scale(-1,1);
+    background-size: cover;
+    border-radius: 100%;
+    margin: auto;
+    margin-top: 1rem;
+}

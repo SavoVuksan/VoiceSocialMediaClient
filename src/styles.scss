@@ -1,10 +1,4 @@
-$light-gray: #B4B4B4;
-$dark-gray: #373737;
-$orange: #FFA372;
-$red: #ED6663;
-$light-blue: #4E89AE;
-$blue: #43658B;
-
+@use './vars.scss' as *;
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
 html{
@@ -25,6 +19,9 @@ h2{
 }
 h3{
     font-size: 2rem;
+}
+h4{
+    font-size: 1.5rem;
 }
 
 span{
@@ -58,4 +55,33 @@ input{
         color: white;
         border: none;
     }
+}
+
+.profile-pic-s{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: inline-block;
+    background-image: url('./assets/ProfilePic.jpg');
+    background-size: cover;
+    transform: scale(-1, 1);
+    img{
+        object-fit: cover;
+        width: 50px;
+        height: 50px;
+        object-position: center center;
+        transform: scale(-1,1);
+    }
+}
+
+app-audio-player{
+    white-space: nowrap;
+}
+
+
+.back{
+    height: 3rem;
+    display: block;
+    margin: 1rem 1rem;
 }

@@ -1,0 +1,70 @@
+@use './../../vars.scss' as *;
+
+#ctn{
+    border: 1px solid $light-gray;
+    margin: 0rem 1rem 1rem 1rem;
+    padding: 1rem;
+    position: relative;
+    ul:first-of-type{
+        list-style-type: none;
+        display: block;
+        margin: 0rem;
+        margin-left: 2rem;
+        li{
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        li:first-of-type{
+            margin-top: .5rem;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+#user{
+    font-weight: bold;
+    
+}
+
+#date{
+    color: $dark-gray;
+}
+
+#tag{
+    color: $blue;
+    font-weight: bold;
+}
+
+#pic{
+    vertical-align: top;
+    position: absolute;
+}
+
+#content{
+    display: inline-block;
+}
+
+#interactions{
+    text-align: center;
+    margin-bottom: 0rem;
+    li{
+        display: inline-block;
+        margin: 0rem 5rem;
+        img{
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+}
+
+#comments{
+    color: $light-blue;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+
+#likes{
+    color: $red;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
