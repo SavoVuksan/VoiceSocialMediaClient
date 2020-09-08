@@ -16,6 +16,7 @@ import { ViewUserComponent } from './view-user/view-user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { NotificationComponent } from './notification/notification.component';
+import { CommentVoiceComponent } from './comment-voice/comment-voice.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NotificationComponent } from './notification/notification.component';
     ViewUserComponent,
     DashboardComponent,
     NotificationsComponent,
-    NotificationComponent
+    NotificationComponent,
+    CommentVoiceComponent
   ],
   imports: [
     BrowserModule,
