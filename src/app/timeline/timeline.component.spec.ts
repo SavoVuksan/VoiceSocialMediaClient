@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TimelineComponent } from './timeline.component';
+import { VoiceComponent } from '../voice/voice.component';
+import { AudioPlayerComponent } from '../audio-player/audio-player.component';
+import { CreateVoiceComponent } from '../create-voice/create-voice.component';
 
 describe('TimelineComponent', () => {
   let component: TimelineComponent;
@@ -8,7 +11,7 @@ describe('TimelineComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimelineComponent ]
+      declarations: [ TimelineComponent, VoiceComponent, AudioPlayerComponent, CreateVoiceComponent ]
     })
     .compileComponents();
   }));
