@@ -1,0 +1,25 @@
+@use './../../vars.scss' as *;
+
+#ctn{
+    width: 50%;
+    margin: auto;
+    margin-top: 2rem;
+    input{
+        margin-bottom: 0.5rem;
+    }
+}
+
+#searchResults{
+    border: 1px solid $light-gray;
+    border-radius: 0.5rem;
+}
+
+.result{
+    div{
+        margin: 1rem;
+    }
+    div, span {
+        vertical-align: middle;
+        font-weight: bold;
+    }
+}

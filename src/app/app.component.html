@@ -1,1 +1,15 @@
-<app-dashboard></app-dashboard>
+<ul>
+  <li><a routerLink="/auth">Authentication</a></li>
+  <li><a routerLink="/auth/login">Login</a>
+    <li><a routerLink="/auth/signup">Signup</a>
+  </li>
+  <li>
+    <a routerLink="/dashboard">Dashboard</a>
+  </li>
+  <li><a routerLink="/dashboard/timeline">Timeline</a></li>
+  <li><a routerLink="/dashboard/notifications">Notifications</a></li>
+  <li><a routerLink="/dashboard/profile">Profile</a></li>
+  <li><a routerLink="/dashboard/voiceDetails">VoiceDetails</a></li>
+  <li><a routerLink="/dashboard/comment">Comment</a></li>
+</ul>
+<router-outlet></router-outlet>
