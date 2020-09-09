@@ -22,4 +22,10 @@ describe('LogInComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  xit('should send data to the server when login btn is pressed', () => {
+    let email = "savovuksan@gmail.com";
+    let password = "password";
+    component.login(email,password);
+  });
 });

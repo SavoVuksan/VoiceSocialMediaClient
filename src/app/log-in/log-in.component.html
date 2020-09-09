@@ -1,9 +1,14 @@
     <h1>Log In</h1>
     <span>New here? <a href="">Sign Up</a></span>
-    <form>
-        <label for="">Email</label>
-        <input type="email" placeholder="savovuksan@gmail.com" autocomplete="email">
-        <label for="">Password</label>
-        <input type="password" placeholder="Must be at least 6 characters" autocomplete="current-password">
-        <input type="button" value="LOGIN">
+    <form (ngSubmit)="login()" #loginForm="ngForm" id="form">
+        <label for="email">Email</label>
+        <input #Email="ngModel" type="email" ngModel [email]="true" name="email" id="email" placeholder="savovuksan@gmail.com" autocomplete="email" required>
+        
+        <div class="error" [hidden]="Email.valid || Email.prestine">
+            <span *ngIf="Email.errors?.required">Required</span>
+            <span *ngIf="Email.errors?.email">Use email format a@b.c</span>
+        </div>
+        <label for="password">Password</label>
+        <input type="password" [(ngModel)]="password" name="password" id="password" placeholder="Must be at least 6 characters" autocomplete="current-password" required>
+        <input type="submit" [disabled]="!loginForm.form.valid" value="LOGIN">
     </form>

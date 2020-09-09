@@ -1,0 +1,28 @@
+@use './vars.scss' as *;
+
+.ng-valid[required], .ng-valid.required{
+    border-left: 0.5rem solid $blue; 
+}
+.ng-invalid:not(form){
+    border-left: 0.5rem solid $red;
+}
+.ng-untouched{
+
+}
+.ng-touched{
+
+}
+.ng-prestine{
+
+}
+.ng-dirty{
+
+}
+
+.error{
+    border: 1px solid $red;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border-top: none;
+    padding: 1rem;
+}
