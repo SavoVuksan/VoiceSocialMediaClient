@@ -42,7 +42,7 @@ import { SearchComponent } from './search/search.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
     
   ],
   providers: [],
