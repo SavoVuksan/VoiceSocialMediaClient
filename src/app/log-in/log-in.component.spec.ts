@@ -3,15 +3,20 @@ import { FormsModule } from '@angular/forms';
 import { LogInComponent } from './log-in.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 describe('LogInComponent', () => {
   let component: LogInComponent;
   let fixture: ComponentFixture<LogInComponent>;
   let router: Router;
+
+  const routes = [
+    {path: 'dashboard', component: DashboardComponent}
+  ]
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LogInComponent ],
-      imports: [FormsModule, RouterTestingModule]
+      imports: [FormsModule, RouterTestingModule.withRoutes(routes)]
     })
     .compileComponents();
   }));

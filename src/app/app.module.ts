@@ -19,11 +19,12 @@ import { NotificationComponent } from './notification/notification.component';
 import { CommentVoiceComponent } from './comment-voice/comment-voice.component';
 import { VoiceDetailsComponent } from './voice-details/voice-details.component';
 import { SearchComponent } from './search/search.component';
+import { TestInputComponent } from './test-input/test-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignUpComponent,
+    
     AuthenticationComponent,
     LogInComponent,
     CreateVoiceComponent,
@@ -36,13 +37,16 @@ import { SearchComponent } from './search/search.component';
     NotificationComponent,
     CommentVoiceComponent,
     VoiceDetailsComponent,
-    SearchComponent
+    SearchComponent,
+    TestInputComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    
     
   ],
   providers: [],
