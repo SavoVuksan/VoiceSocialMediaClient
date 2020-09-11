@@ -1,16 +1,23 @@
   <h1>Sign Up</h1>
   <span>Already have an account? <a href="auth/login">Log In</a></span>
   <form #form="ngForm" id="form">
-    <label for="username">Username</label>
-    <input type="text" #tUsername="ngModel" name="username" minlength="4" pattern="" [ngModel]="username" (ngModelChange)="username=$event" id="username" placeholder="@savovuk" required>
-    <div class="error" [hidden]="tUsername.valid || tUsername.pristine">
-      <p *ngIf="tUsername.errors?.minlength">Username must be at least 4 characters</p>
-      <p *ngIf="tUsername.errors?.pattern">Username can't start with a number and can't contain special letters</p>
-    </div>
+      <label for="username">Username</label>
+      <!--
+      <input type="text" #tUsername="ngModel" name="username" minlength="4" pattern="" [ngModel]="username" (ngModelChange)="username=$event" id="username" placeholder="@savovuk" required>
+      <div class="error" [hidden]="tUsername.valid || tUsername.pristine">
+          <p *ngIf="tUsername.errors?.minlength">Username must be at least 4 characters</p>
+          <p *ngIf="tUsername.errors?.pattern">Username can't start with a number and can't contain special letters</p>
+        </div>
+    -->
     <label for="email">Email</label>
+    <!--
     <input type="email" id="email" name="email" [(ngModel)]="email" [email]="true" placeholder="savovuksan@gmail.com" required>
     <label for="password">Password</label>
     <input type="password" id="password" name="password" [(ngModel)]="password" minlength="6"  placeholder="Must be at least 6 characters" required>
-    <input type="submit" value="SIGN UP" [disabled]="!form.form.valid">
+-->
+<!--
+<input type="submit" value="SIGN UP" [disabled]="!form.form.valid">
     {{diagnostics}}
+-->
   </form>
+<input type="text" [(ngModel)]="test">

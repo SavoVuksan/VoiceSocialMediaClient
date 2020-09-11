@@ -19,7 +19,6 @@ import { NotificationComponent } from './notification/notification.component';
 import { CommentVoiceComponent } from './comment-voice/comment-voice.component';
 import { VoiceDetailsComponent } from './voice-details/voice-details.component';
 import { SearchComponent } from './search/search.component';
-import { TestInputComponent } from './test-input/test-input.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,6 @@ import { TestInputComponent } from './test-input/test-input.component';
     CommentVoiceComponent,
     VoiceDetailsComponent,
     SearchComponent,
-    TestInputComponent,
     SignUpComponent
   ],
   imports: [
