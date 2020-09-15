@@ -5,14 +5,22 @@ import { FormsModule, FormControl, NgForm, NG_VALIDATORS, MinLengthValidator, Ng
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
+import { routes } from './../app-routing.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 describe('SignUpComponent', () => {
   let component: SignUpComponent;
   let fixture: ComponentFixture<SignUpComponent>;
   let ngForm: NgForm;
+
+  let router: Router;
+  let location: Location;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SignUpComponent, NgForm, NgModel ],
-      imports: [FormsModule]
+      imports: [FormsModule, RouterTestingModule.withRoutes(routes)]
     })
     .compileComponents();
   }));
@@ -21,6 +29,9 @@ describe('SignUpComponent', () => {
     fixture = TestBed.createComponent(SignUpComponent);
     component = fixture.componentInstance;
     ngForm = fixture.debugElement.query(By.css('form')).injector.get(NgForm);
+    router = TestBed.inject(Router);
+    location = TestBed.inject(Location);
+    router.initialNavigation();
     fixture.detectChanges();
   }));
 
@@ -106,7 +117,7 @@ describe('SignUpComponent', () => {
     expect(ngForm.controls[password.name].errors?.minlength).not.toBeUndefined();
   });
 
-  it('should have submit button disabled on invalid', () =>{
+  it('should have submit button disabled when form is invalid', () =>{
     
     let submit: HTMLInputElement = fixture.nativeElement.querySelector('input[type="submit"]');
     fixture.detectChanges();
@@ -120,4 +131,27 @@ describe('SignUpComponent', () => {
     
     expect(submit.disabled).toBeFalsy();
   });
+
+  it('should navigate to /login when clicked on link',fakeAsync(()=>{
+    let link: HTMLLinkElement = fixture.nativeElement.querySelector('a');
+    link.click();
+    tick();
+    expect(location.path()).toBe('/auth/login');
+  }));
+
+  it('should navigate to /dashboard when signup was successful',fakeAsync(()=>{
+    ngForm.form.removeControl('username');
+    ngForm.form.removeControl('email');
+    ngForm.form.removeControl('password');
+    
+    let submit: HTMLInputElement = fixture.nativeElement.querySelector('input[type="submit"]');
+    let s = spyOn(component, '_fakeRestCall').and.returnValue(Promise.resolve({status: 'success'}));
+    let spy = spyOn(component, 'submit');
+    submit.click();
+    
+    tick();
+    fixture.detectChanges();
+    console.log(spy.calls.count());
+    expect(location.path()).toBe('dashboard/timeline');
+  }));
 });

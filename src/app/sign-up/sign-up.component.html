@@ -1,6 +1,6 @@
   <h1>Sign Up</h1>
-  <span>Already have an account? <a href="auth/login">Log In</a></span>
-  <form #form="ngForm" >
+  <span>Already have an account? <a routerLink="/auth/login">Log In</a></span>
+  <form #form="ngForm" (ngSubmit)="submit()" >
     <label for="username">Username</label>
     <input type="text" #tUsername="ngModel" name="username" minlength="4" pattern="^[A-z]{1}\w+" [ngModel]="username"
       (ngModelChange)="username=$event" id="username" placeholder="@savovuk" required autocomplete="none">
@@ -14,7 +14,7 @@
       required>
     <label for="password">Password</label>
     <input type="password" id="password" name="password" [(ngModel)]="password" minlength="6"
-      placeholder="Must be at least 6 characters" required>
+      placeholder="Must be at least 6 characters" required autocomplete="current-password">
 
     <input type="submit" name="submit" value="SIGN UP" [disabled]="!form.form.valid">
     
