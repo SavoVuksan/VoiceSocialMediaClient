@@ -8,8 +8,7 @@ import { By } from '@angular/platform-browser';
 describe('SignUpComponent', () => {
   let component: SignUpComponent;
   let fixture: ComponentFixture<SignUpComponent>;
-  let usernameModel: NgModel;
-
+  let ngForm: NgForm;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SignUpComponent, NgForm, NgModel ],
@@ -18,66 +17,107 @@ describe('SignUpComponent', () => {
     .compileComponents();
   }));
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     fixture = TestBed.createComponent(SignUpComponent);
     component = fixture.componentInstance;
-    usernameModel = fixture.debugElement.query(By.css('#username')).injector.get(NgModel);
+    ngForm = fixture.debugElement.query(By.css('form')).injector.get(NgForm);
     fixture.detectChanges();
-  });
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should change test var in component to test',() =>{
-    const input: HTMLInputElement = fixture.nativeElement.querySelector('#test');
-    input.value = 'test';
-    input.dispatchEvent(new Event('input'));
+  it('should update username in component', fakeAsync(()=>{
+    let username: HTMLInputElement = fixture.nativeElement.querySelector('#username');
+    username.value = 'Savo';
+    username.dispatchEvent(new Event('input'));
 
     fixture.detectChanges();
-    console.log(component.test);
-    expect(component.test).toBe('test');
+    tick();
+
+    expect(component.username).toBe('Savo');
+
+    component.username = 'Bozo';
+
+    fixture.detectChanges();
+    tick();
+
+    expect(username.value).toBe('Bozo');
+  }));
+
+  it('should validate username', fakeAsync(() =>{
+    let username: HTMLInputElement = fixture.nativeElement.querySelector('#username');
+    
+    expect(ngForm.controls['username'].errors?.required).not.toBeUndefined();
+
+    username.value = 'sav';
+    username.dispatchEvent(new Event('input'));
+
+    fixture.detectChanges();
+    
+    expect(ngForm.controls['username'].errors?.minlength).not.toBeUndefined();
+
+    username.value = ' savo';
+    username.dispatchEvent(new Event('input'));
+
+    fixture.detectChanges();
+
+    expect(ngForm.controls['username'].errors?.pattern).not.toBeUndefined();
+
+    username.value = '1savo';
+    username.dispatchEvent(new Event('input'));
+
+    fixture.detectChanges();
+
+    expect(ngForm.controls['username'].errors?.pattern).not.toBeUndefined();
+
+    username.value = 'savo_20';
+    username.dispatchEvent(new Event('input'));
+
+    fixture.detectChanges();
+
+    expect(ngForm.controls['username'].errors?.pattern).toBeUndefined();
+  }));
+
+  it('should require password and email', fakeAsync(() =>{
+    let email = fixture.nativeElement.querySelector('#email') as HTMLInputElement;
+    let password = fixture.nativeElement.querySelector('#password') as HTMLInputElement;
+
+    
+    expect(ngForm.controls[email.name].errors?.required).not.toBeUndefined('Username required!');
+    expect(ngForm.controls[password.name].errors?.required).not.toBeUndefined('Password required!');
+    
+    email.value = 'savovuksan@gmail.com';
+    email.dispatchEvent(new Event('input'));
+    password.value = 'password';
+    password.dispatchEvent(new Event('input'));
+
+    expect(ngForm.controls[email.name].errors?.required).toBeUndefined();
+    expect(ngForm.controls[password.name].errors?.required).toBeUndefined();
+  }));
+
+  it('should have a password min length of 6',()=>{
+    let password : HTMLInputElement = fixture.nativeElement.querySelector('#password');
+
+    password.value = '123';
+    password.dispatchEvent(new Event('input'));
+
+    expect(ngForm.controls[password.name].errors?.minlength).not.toBeUndefined();
   });
 
-  it('should test username validator when input is 3 character long',()=>{
-    const inputDE = fixture.debugElement.query(By.css('#username'));
-    component.username = 'usr';
-    const model = inputDE.injector.get(NgModel);
-    model.statusChanges.subscribe((val) =>{
-      console.log(val);
-    });
+  it('should have submit button disabled on invalid', () =>{
     
-    //console.log(model.status,model.valid,model.value,model.model,model.control.valid);
-    
+    let submit: HTMLInputElement = fixture.nativeElement.querySelector('input[type="submit"]');
     fixture.detectChanges();
-    fixture.whenStable().then(() =>{
-      console.log(model);
-      console.log(model.status,model.valid,model.value,model.model,model.control.valid);
-    });
     
-   
-  });
-
-  it('should test ngModel on username async', ()=>{
-    const inputDE = fixture.debugElement.query(By.css('#username'));
-    const input = fixture.nativeElement.querySelector('#username') as HTMLInputElement;
-    const formDE = fixture.debugElement.query(By.css('form'));
-    const form = formDE.nativeElement as HTMLFormElement;
-    const ngForm = formDE.injector.get(NgForm);
-
-    input.value = 'usrrrr';
-    input.dispatchEvent(new Event('focus'));
-    input.dispatchEvent(new Event('input'));
+    expect(submit.disabled).toBeTruthy();
     
-
+    ngForm.form.removeControl('password');
+    ngForm.form.removeControl('username');
+    ngForm.form.removeControl('email');
     fixture.detectChanges();
-   
-    fixture.whenStable().then(()=>{
-      fixture.detectChanges();
-      console.log("FORM");
-      console.log(ngForm);
-    });
-    console.log(component.username, ngForm, formDE);
-
+    
+    expect(submit.disabled).toBeFalsy();
   });
 });

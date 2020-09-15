@@ -1,10 +1,10 @@
   <h1>Sign Up</h1>
   <span>Already have an account? <a href="auth/login">Log In</a></span>
-  <input type="text" #tUsername="ngModel" name="username" minlength="4" pattern="" [ngModel]="username"
-    (ngModelChange)="username=$event" id="username" placeholder="@savovuk" required>
-  <form >
+  <form #form="ngForm" >
     <label for="username">Username</label>
-    <div class="error" [hidden]="tUsername.valid || tUsername.pristine">
+    <input type="text" #tUsername="ngModel" name="username" minlength="4" pattern="^[A-z]{1}\w+" [ngModel]="username"
+      (ngModelChange)="username=$event" id="username" placeholder="@savovuk" required autocomplete="none">
+    <div class="error" [hidden]="tUsername.valid || tUsername.pristine && tUsername.untouched || tUsername.errors?.required">
       <p *ngIf="tUsername.errors?.minlength">Username must be at least 4 characters</p>
       <p *ngIf="tUsername.errors?.pattern">Username can't start with a number and can't contain special letters</p>
     </div>
@@ -16,7 +16,8 @@
     <input type="password" id="password" name="password" [(ngModel)]="password" minlength="6"
       placeholder="Must be at least 6 characters" required>
 
-   <!-- <input type="submit" value="SIGN UP" [disabled]="!form.form.valid">
-    -->
-    <input type="text" ngModel name="test" id="test">
+    <input type="submit" name="submit" value="SIGN UP" [disabled]="!form.form.valid">
+    
   </form>
+
+ 
