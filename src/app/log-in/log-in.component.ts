@@ -16,12 +16,20 @@ export class LogInComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  _fakeRestCall(){
+    return new Promise(resolve =>{
+      setTimeout(() => {
+        resolve('success');
+      }, 100);
+    })
+  }
   // TODO: Implement proper login!
   login(){
-    let u = new User("savovuk", this.email);
-    u.id = 1;
-    this.router.navigate(['dashboard']); 
-    return u;
+    this._fakeRestCall().then(msg=> {
+      if(msg === 'success'){
+        this.router.navigate(['dashboard']); 
+      }
+    })
   }
 
 }

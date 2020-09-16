@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, tick } from '@angular/core/testing';
 
 import { SignUpComponent } from './sign-up.component';
 import { FormsModule, FormControl, NgForm, NG_VALIDATORS, MinLengthValidator, NgModel } from '@angular/forms';
@@ -31,7 +31,7 @@ describe('SignUpComponent', () => {
     ngForm = fixture.debugElement.query(By.css('form')).injector.get(NgForm);
     router = TestBed.inject(Router);
     location = TestBed.inject(Location);
-    router.initialNavigation();
+    //router.initialNavigation();
     fixture.detectChanges();
   }));
 
@@ -140,18 +140,15 @@ describe('SignUpComponent', () => {
   }));
 
   it('should navigate to /dashboard when signup was successful',fakeAsync(()=>{
-    ngForm.form.removeControl('username');
-    ngForm.form.removeControl('email');
-    ngForm.form.removeControl('password');
+     ngForm.form.removeControl('username');
+     ngForm.form.removeControl('email');
+     ngForm.form.removeControl('password');
+     let submit: HTMLInputElement = fixture.nativeElement.querySelector('input[type="submit"]');
     
-    let submit: HTMLInputElement = fixture.nativeElement.querySelector('input[type="submit"]');
-    let s = spyOn(component, '_fakeRestCall').and.returnValue(Promise.resolve({status: 'success'}));
-    let spy = spyOn(component, 'submit');
     submit.click();
+    flush();
     
-    tick();
-    fixture.detectChanges();
-    console.log(spy.calls.count());
-    expect(location.path()).toBe('dashboard/timeline');
+    expect(location.path()).toBe('/dashboard/timeline');
+    
   }));
 });

@@ -26,16 +26,15 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   _fakeRestCall(): Promise<any>{
     return new Promise((resolve,reject) =>{
       setTimeout(()=>{
-        resolve({status: 'success'});
+        resolve('success');
       },100);
     });
   }
 
   submit(){
-    this._fakeRestCall().then(status => {
-      console.log(`Status ${status.status}`);
-      if(status.status === 'success'){
-        this.router.navigateByUrl('/dashboard');
+    this._fakeRestCall().then(message => {
+      if(message === 'success'){
+        this.router.navigateByUrl('dashboard/timeline');
       }
     });
   }

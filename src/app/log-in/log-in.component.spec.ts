@@ -1,56 +1,83 @@
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { LogInComponent } from './log-in.component';
-import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
-import { DashboardComponent } from '../dashboard/dashboard.component';
+import {
+  async,
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+  flush
+} from '@angular/core/testing';
+import {
+  FormsModule, NgForm
+} from '@angular/forms';
+import {
+  LogInComponent
+} from './log-in.component';
+import {
+  RouterTestingModule
+} from '@angular/router/testing';
+import {
+  Router
+} from '@angular/router';
+import {
+  DashboardComponent
+} from '../dashboard/dashboard.component';
+import {
+  routes
+} from '../app-routing.module';
+import {
+  Location
+} from '@angular/common';
+import { By } from '@angular/platform-browser';
 
 describe('LogInComponent', () => {
   let component: LogInComponent;
-  let fixture: ComponentFixture<LogInComponent>;
+  let fixture: ComponentFixture < LogInComponent > ;
   let router: Router;
+  let location: Location;
 
-  const routes = [
-    {path: 'dashboard', component: DashboardComponent}
-  ]
-  beforeEach(async(() => {
+
+  beforeEach(async (() => {
     TestBed.configureTestingModule({
-      declarations: [ LogInComponent ],
-      imports: [FormsModule, RouterTestingModule.withRoutes(routes)]
-    })
-    .compileComponents();
+        declarations: [LogInComponent],
+        imports: [FormsModule, RouterTestingModule.withRoutes(routes)]
+      })
+      .compileComponents();
   }));
 
-  beforeEach(() => {
-    router = TestBed.get(Router);
+  beforeEach(async (() => {
+    router = TestBed.inject(Router);
+    location = TestBed.inject(Location);
     fixture = TestBed.createComponent(LogInComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+    
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should send data to the server when login btn is pressed', () => {
-    let email = "savovuksan@gmail.com";
-    let password = "password";
-    let u = component.login();
-    expect(u.id).toBe(1);
-  });
-  it(' should route to the dashboard after successful login', () => {
-    let email = "savovuksan@gmail.com";
-    let password = "password";
-    spyOn(component.router,'navigate');
-    let u = component.login();
-    expect(component.router.navigate).toHaveBeenCalled();
-    
-  });
-  xit('should navigate to SignUp Component when clicking Sign Up', fakeAsync(()=>{
+  it('should navigate to SignUp Component when clicking Sign Up link', fakeAsync(() => {
     let link = fixture.nativeElement.querySelector('a');
     link.click();
 
     tick();
-    expect(location.pathname).toBe('/auth/signup');
+    expect(location.path()).toBe('/auth/signup');
   }));
+  it('should navigate to Dashboard when login was successful', fakeAsync(() => {
+    let ngForm: NgForm = fixture.debugElement.query(By.css('form')).injector.get(NgForm);
+    let submit: HTMLInputElement = fixture.nativeElement.querySelector('input[type="submit"]');
+    
+    fixture.detectChanges();
+    ngForm.form.removeControl('email');
+    ngForm.form.removeControl('password');
+    fixture.detectChanges();
+    expect(submit.disabled).toBeFalse();
+
+    submit.click();
+    flush();
+    expect(location.path()).toBe('/dashboard/timeline');
+  }));
+
+
 });
