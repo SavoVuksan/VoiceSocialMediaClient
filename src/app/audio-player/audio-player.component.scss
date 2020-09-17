@@ -36,14 +36,16 @@
     border-radius: 100%;
     border:none;
     position: absolute;
-    left: 50%;
+    left: 0%;
     top:50%;
     transform: translate(-50%,-50%);
+    pointer-events: none;
 }
 
 #progress{
     height: 100%;
     background-color: $orange;
     border-radius: 1rem;
-    width: 50%;
+    width: 0%;
+    pointer-events: none;
 }

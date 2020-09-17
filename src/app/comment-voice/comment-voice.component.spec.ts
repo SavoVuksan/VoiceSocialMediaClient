@@ -4,6 +4,7 @@ import { CommentVoiceComponent } from './comment-voice.component';
 import { VoiceComponent } from '../voice/voice.component';
 import { CreateVoiceComponent } from '../create-voice/create-voice.component';
 import { AudioPlayerComponent } from '../audio-player/audio-player.component';
+import { TrackLengthPipe } from '../track-length.pipe';
 
 describe('CommentVoiceComponent', () => {
   let component: CommentVoiceComponent;
@@ -11,7 +12,7 @@ describe('CommentVoiceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommentVoiceComponent, VoiceComponent, CreateVoiceComponent, AudioPlayerComponent ]
+      declarations: [ CommentVoiceComponent, VoiceComponent, CreateVoiceComponent, AudioPlayerComponent, TrackLengthPipe ]
     })
     .compileComponents();
   }));

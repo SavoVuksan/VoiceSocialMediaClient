@@ -19,6 +19,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { CommentVoiceComponent } from './comment-voice/comment-voice.component';
 import { VoiceDetailsComponent } from './voice-details/voice-details.component';
 import { SearchComponent } from './search/search.component';
+import { TrackLengthPipe } from './track-length.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SearchComponent } from './search/search.component';
     CommentVoiceComponent,
     VoiceDetailsComponent,
     SearchComponent,
-    SignUpComponent
+    SignUpComponent,
+    TrackLengthPipe,
   ],
   imports: [
     BrowserModule,

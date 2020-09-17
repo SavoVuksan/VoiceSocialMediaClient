@@ -4,6 +4,7 @@ import { TimelineComponent } from './timeline.component';
 import { VoiceComponent } from '../voice/voice.component';
 import { AudioPlayerComponent } from '../audio-player/audio-player.component';
 import { CreateVoiceComponent } from '../create-voice/create-voice.component';
+import { TrackLengthPipe } from '../track-length.pipe';
 
 describe('TimelineComponent', () => {
   let component: TimelineComponent;
@@ -11,7 +12,7 @@ describe('TimelineComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimelineComponent, VoiceComponent, AudioPlayerComponent, CreateVoiceComponent ]
+      declarations: [ TimelineComponent, VoiceComponent, AudioPlayerComponent, CreateVoiceComponent , TrackLengthPipe]
     })
     .compileComponents();
   }));

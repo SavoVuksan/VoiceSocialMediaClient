@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TrackLengthPipe } from '../track-length.pipe';
 
 import { AudioPlayerComponent } from './audio-player.component';
 
@@ -8,7 +9,7 @@ describe('AudioPlayerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AudioPlayerComponent ]
+      declarations: [ AudioPlayerComponent, TrackLengthPipe ]
     })
     .compileComponents();
   }));
@@ -22,4 +23,6 @@ describe('AudioPlayerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  
 });

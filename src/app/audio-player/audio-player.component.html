@@ -1,13 +1,14 @@
-<button id="play">
-   <img src="./../../assets/icons/Play.svg" alt="">
+<button id="play" (click)="play()">
+  <img [hidden]="!audio.paused" src="./../../assets/icons/Play.svg" alt="">
+  <img [hidden]="audio.paused" src="./../../assets/icons/Pause.svg" alt="">
 </button>
-<span>1:30</span>
-<div id="progressBar">
-<div id="progress">
+<span>{{trackPosition | trackLength}}</span>
+<div  id="progressBar" (mousedown)="this.drag=true" (mouseup)="this.drag=false" (mousedown)="setProgress($event)" (mousemove)="setProgress($event)">
+  <div #progressbar id="progress">
 
-</div>
-<button id="knob">
+  </div>
+  <button #knob id="knob">
 
-</button>
+  </button>
 </div>
-<span>1:50</span>
+<span>{{trackLength | trackLength}}</span>
