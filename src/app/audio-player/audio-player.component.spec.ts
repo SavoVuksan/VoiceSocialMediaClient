@@ -24,5 +24,5 @@ describe('AudioPlayerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  
+
 });
